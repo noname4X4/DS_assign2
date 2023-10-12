@@ -17,7 +17,7 @@ public class GETClient {
         String input = scanner.nextLine();
         int port = Integer.parseInt(input);
         while(true) {
-            try {
+
 
                 if(flag == false) {
                     try (Socket socket = new Socket("localhost", port);
@@ -42,6 +42,10 @@ public class GETClient {
 
                     } catch (IOException e) {
                         System.out.println("Error: Invalid port number " + port);
+                        System.out.println("Please enter the port number:");
+                        scanner = new Scanner(System.in);
+                        input = scanner.nextLine();
+                        port = Integer.parseInt(input);
                     }
                 }else if(flag){
                     System.out.println("Client is hanging on, if you want to get the weather data aging, please input get");
@@ -52,10 +56,6 @@ public class GETClient {
                         flag = false;
                     }
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Could not connect to the server");
-
-            }
         }
     }
 }
