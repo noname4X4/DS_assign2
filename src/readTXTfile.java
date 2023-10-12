@@ -1,5 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,10 +9,10 @@ import java.util.Map;
 //try to read a file and transfer to json format
 public class readTXTfile {
     public static void main(String[] args) throws IOException {
-        WeatherData weatherData = readFile("src/data.txt");
-        System.out.println(weatherData.getId());
+        JSONObject weatherData = readFile("src/data.txt");
+        System.out.println(weatherData);
     }
-    public static WeatherData readFile(String filepath) throws IOException {
+    public static JSONObject readFile(String filepath) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(filepath));
         Map<String, Object> data = new HashMap<>();
 
@@ -23,9 +23,9 @@ public class readTXTfile {
 
             }
         }
-        WeatherData weatherData = new WeatherData();
+        JSONObject weatherData = new JSONObject();
         for(String key : data.keySet()){//assign data in txt to a weatherdata entity
-            weatherData.set(key, (String) data.get(key));
+            weatherData.put(key, (String) data.get(key));
         }
         return weatherData;
     }

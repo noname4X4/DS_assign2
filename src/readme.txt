@@ -4,5 +4,6 @@ now achieved:
 server and client connect through socket
 read txt file and transfer to json format
 create entity for weather data
-verify data(the invalid data miss two strings:local_date_time:15/04:00pm
+verify data(the invalid data miss two attributes:local_date_time:15/04:00pm
                                               local_date_time_full:20230715160000)
+verify data(the invalid data with extra attribute)
