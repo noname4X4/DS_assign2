@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 public class ContentServer {
-
+    private static boolean flag = true;
     private static final int DEFAULT_PORT = 4567;
 
     public static void main(String[] args) {
@@ -18,12 +18,13 @@ public class ContentServer {
 
         System.out.print("Enter the file path (e.g., src/data.txt): ");
         String filePath = scanner.nextLine();
-        while (true){
+        while (flag){
             if(isValidFile(filePath)){
                 System.out.println("valid filepath");
                 break;
             }else {
                 System.out.println("please check the file path or the file's attribute");
+                flag = false;
             }
         }
 
@@ -49,7 +50,7 @@ public class ContentServer {
             System.out.println("Response: " + responseLine);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("invalid port number or hostname");
         }
     }
 
