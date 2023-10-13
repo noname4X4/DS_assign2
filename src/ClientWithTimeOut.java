@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 
 import org.json.JSONObject;
 
-public class GETClient {
+public class ClientWithTimeOut {
     private static boolean flag = false;
     private static JSONObject weatherData;
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
